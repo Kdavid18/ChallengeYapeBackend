@@ -1,0 +1,36 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="CucumberUndefinedStep" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="VulnerableLibrariesLocal" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="isIgnoringEnabled" value="true" />
+      <option name="ignoredModules">
+        <list>
+          <option value="prueba_yape" />
+          <option value="prueba_yape" />
+          <option value="prueba_yape" />
+          <option value="prueba_yape" />
+          <option value="prueba_yape" />
+        </list>
+      </option>
+      <option name="ignoredPackages">
+        <list>
+          <option value="ch.qos.logback:logback-classic:1.4.11" />
+          <option value="ch.qos.logback:logback-core:1.4.11" />
+          <option value="io.netty:netty-codec-http2:4.1.96.Final" />
+          <option value="com.fasterxml.jackson.core:jackson-databind:2.13.2.2" />
+          <option value="com.google.guava:guava:30.1-jre" />
+        </list>
+      </option>
+      <option name="ignoredReasons">
+        <list>
+          <option value="Not exploitable" />
+          <option value="Fixed in branch" />
+          <option value="Fixed in branch" />
+          <option value="Fixed in branch" />
+          <option value="Fixed in branch" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
