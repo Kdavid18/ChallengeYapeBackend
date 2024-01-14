@@ -23,8 +23,8 @@ Feature: Get authentication token
     * def payload =
     """
     {
-      "username" : <username>,
-      "password" : <password>
+      "username": <username>,
+      "password": <password>
     }
     """
 

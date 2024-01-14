@@ -6,8 +6,11 @@ function fn(){
     endpointBooking: '/booking',
     endpointPing: '/ping',
     username: 'admin',
-    password: 'password123'
+    password: 'password123',
+    authToken: 'Basic YWRtaW46cGFzc3dvcmQxMjM='
     };
+
+    karate.configure('continueOnStepFailure', true);
 
     return config;
 }

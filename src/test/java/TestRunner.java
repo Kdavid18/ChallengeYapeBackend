@@ -8,15 +8,32 @@ import org.junit.Test;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
 public class TestRunner {
     @Test
     public void testRunner() throws IOException {
-        Results results = Runner.path("src/test/resources/features/booking/get-booking.feature")
+        String[] featureNames = {
+                "auth/create-token",
+                "booking/create-booking",
+                "booking/delete-booking",
+                "booking/get-booking",
+                "booking/get-booking-id",
+                "booking/partial-update-booking",
+                "booking/update-booking",
+                "ping/get-ping"
+        };
+
+        String path = "src/test/resources/features/";
+
+        String[] featurePaths = Arrays.stream(featureNames)
+                .map(featureName -> path + featureName + ".feature")
+                .toArray(String[]::new);
+
+        Results results = Runner.path(featurePaths)
                 //.tags("@test")
-                //.tags("@Interbank")
                 .outputCucumberJson(true)
                 .parallel(1);
         generateReport(results.getReportDir());
