@@ -1,0 +1,49 @@
+name: Karate API Tests
+
+on:
+  schedule:
+    - cron: "0 5 * * 1-5"
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - "*"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Setup Java
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: '21'
+
+    - name: Build and Test
+      run: |
+        mvn clean test
+      working-directory: src/test/java/TestRunner.java
+
+
+    - name: Run Karate Tests
+      run: |
+        mvn clean test-compile
+        mvn exec:java -Dexec.mainClass="com.intuit.karate.cli.Main" -Dexec.args="-d target
+
+    - name: Upload Cucumber JSON
+      uses: actions/upload-artifact@v2
+      with:
+        name: cucumber-json
+        path: target
+
+
+    - name: Upload HTML Report
+      uses: actions/upload-artifact@v2
+      with:
+        name: cucumber-report
+        path: target/cucumber-html-reports
